@@ -33,4 +33,6 @@ Groq SDK
 
   audio processing 
 
+there are docs for Groq listed in the url below which you must fill out to get the increased rate limits for the weekend 
+
 https://brainwavecollective.notion.site/AI-Tinkerers-Hackathon-Technical-Reference-c2fc215b800e42dd99ab4472e50d8b3a
