@@ -15,6 +15,7 @@ Twelvelabs video
    embeddings 
    RAG
    Video image search
+     The video indexing is fairly fast
      semantic search API
    classification API
      summary
