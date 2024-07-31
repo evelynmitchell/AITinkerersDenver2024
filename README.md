@@ -10,8 +10,26 @@ Wildcard: Wildcard means wildcard! What have you got!
 
 ### Tooling
 
-Teelelabs video
+Twelelabs video
+   embeddings 
+   RAG
+   Video image search
+     semantic search API
+   classification API
+     summary
+     chatets
+   open source framework jockey 
+      agents 
+      LLM orchestration 
+      chat with video to create content 
+
 
 Groq SDK
+
+  Groq tools
+
+  40000tps input 1000tps output 
+
+  audio processing 
 
 https://brainwavecollective.notion.site/AI-Tinkerers-Hackathon-Technical-Reference-c2fc215b800e42dd99ab4472e50d8b3a
