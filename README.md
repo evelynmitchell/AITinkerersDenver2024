@@ -10,6 +10,6 @@ Wildcard: Wildcard means wildcard! What have you got!
 
 ### Tooling
 
-Elevenlabs video
+Teelelabs video
 
 Groq SDK
