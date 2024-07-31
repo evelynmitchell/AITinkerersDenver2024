@@ -10,7 +10,7 @@ Wildcard: Wildcard means wildcard! What have you got!
 
 ### Tooling
 
-Twelelabs video
+Twelvelabs video
    embeddings 
    RAG
    Video image search
