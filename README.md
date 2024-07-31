@@ -28,6 +28,7 @@ Twelvelabs video
         planner
           video tasks
        Lang graph wrapper
+         There are tutorials on the Twelvelabs Jockey webpage.
 
 
 Groq SDK
