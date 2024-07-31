@@ -23,6 +23,10 @@ Twelvelabs video
       LLM orchestration 
       chat with video to create content 
       there will be a repo to clone to start with the tools/jockey 
+        supervisor 
+        planner
+          video tasks
+       Lang graph wrapper
 
 
 Groq SDK
