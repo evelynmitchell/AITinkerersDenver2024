@@ -2,7 +2,7 @@
 
 The Hackathon brief is to do a project in the area of:
 
-Sports Understanding: Leverage multimodal AI to solve problems in sports and exercise analytics in order to boost athletic performance and fitness.
+Sports Understanding: Leverage multimodal AI to solve problems in sports and exercise analytics inm order to boost athletic performance and fitness.
 
 Ecology and Environment: Develop multimodal AI-driven solutions to address challenges in ecology and environmental research.
 
@@ -30,6 +30,8 @@ Twelvelabs video
           video tasks
        Lang graph wrapper
          There are tutorials on the Twelvelabs Jockey webpage.
+
+    sample video is available on the 12labs site
 
 
 Groq SDK
