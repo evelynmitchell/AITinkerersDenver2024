@@ -13,3 +13,5 @@ Wildcard: Wildcard means wildcard! What have you got!
 Teelelabs video
 
 Groq SDK
+
+https://brainwavecollective.notion.site/AI-Tinkerers-Hackathon-Technical-Reference-c2fc215b800e42dd99ab4472e50d8b3a
