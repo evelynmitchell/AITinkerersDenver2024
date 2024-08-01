@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: myuser/pgvector
+    container_name: my_postgres
+    environment:
+      POSTGRES_USER: your_username
+      POSTGRES_PASSWORD: your_password
+      POSTGRES_DB: your_database
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+# database_url = "postgresql://your_username:your_password@localhost:5433/your_database"
+# docker build --build-arg PG_MAJOR=16 -t myuser/pgvector .
