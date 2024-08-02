@@ -4,7 +4,7 @@
 
 [x] (efm) https://github.com/evelynmitchell/AITinkerersDenver2024
 
-[ ] () environment variables for holding the twelvelabs.io , groq, and likely huggingface, openai and claude keys. I don't know what nodejs does similar to dotenv
+[/] () environment variables for holding the twelvelabs.io , groq, and likely huggingface, openai and claude keys. I don't know what nodejs does similar to dotenv
 
 [ ] (who) put up a static landing page about the project on purposefullybuilt.org
 
