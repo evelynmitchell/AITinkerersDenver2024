@@ -46,3 +46,7 @@ there are docs for Groq listed in the url below which you must fill out to get t
 
 ````
 https://brainwavecollective.notion.site/AI-Tinkerers-Hackathon-Technical-Reference-c2fc215b800e42dd99ab4472e50d8b3a
+
+## Project
+
+Semantic search with Knowledge Graph RAG over videos
