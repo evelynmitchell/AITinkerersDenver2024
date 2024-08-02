@@ -1,6 +1,6 @@
 [ ] (Nicholas) linkedin 
 
-[x] (efm) domainname
+[x] (efm) domainname purposefullybuilt.org
 
 [x] (efm) https://github.com/evelynmitchell/AITinkerersDenver2024
 
