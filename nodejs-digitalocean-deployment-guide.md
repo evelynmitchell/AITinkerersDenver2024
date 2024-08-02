@@ -135,13 +135,7 @@ pm2 logs
 
 2. Further configuration:
    ```bash
-   code .
-   exit
-   cd
-   cd ~/
-   ls
-   cd AITinkerersDenver2024/
-   cd frontend/
+   cd ~/AITinkerersDenver2024/frontend
    npm run dev -- -p 0.0.0.0:8081
    vim package.json
    npm run dev -- -p 8081 --hostname=0.0.0.0
@@ -155,19 +149,19 @@ git branch
 git status
 git checkout poc
 git pull
-cd frontend/
+cd ~/AITinkerersDenver2024/frontend
 npm ci
 ls
 cd cd
 pwd
-cd examples/
+cd ~/AITinkerersDenver2024/frontend/examples
 pwd
 ```
 
 ## Running TypeScript
 
 ```bash
-ts-nodets search.ts
+cd ~/AITinkerersDenver2024/frontend/examples
 ts-node search.ts
 ```
 
