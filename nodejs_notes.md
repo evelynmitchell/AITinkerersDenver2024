@@ -19,3 +19,7 @@ Call ``pm2``` save to schedule your code to run at launch.
 
 Repeat these steps for any other NodeJS apps that need to run concurrently -- schedule them to run at boot time on whatever internal port you like using PM2, then map that port to an HTTP/HTTPS URL in the nginx config. Build out the URL directory structure you need by mapping applications to URL paths; that's the reverse proxy method in a nutshell! 
 
+# NextJS
+
+https://nextjs.org/
+
