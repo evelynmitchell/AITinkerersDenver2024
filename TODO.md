@@ -1,15 +1,15 @@
-[ ] (who) task
+[ ] (Nicholas) linkedin 
 
-[ ] (who) task
+[x] (efm) domainname
 
-[ ] (who) task
+[x] (efm) https://github.com/evelynmitchell/AITinkerersDenver2024
 
-[ ] (who) task
+[ ] () environment variables for holding the twelvelabs.io , groq, and likely huggingface, openai and claude keys. I don't know what nodejs does similar to dotenv
 
-[ ] (who) task
+[ ] (who) put up a static landing page about the project on purposefullybuilt.org
 
-[ ] (who) task
+[ ] (who) try out the twelvelabs.io video embedding with a video sample
 
-[ ] (who) task
+[ ] (who) get a profile from all team members for website/presentation
 
-[ ] (who) task
+[ ] (who) presentation
