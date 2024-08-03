@@ -3,9 +3,9 @@ import { revalidatePath } from "next/cache";
 import fs from "node:fs/promises";
 
 export async function POST(req: Request) {
+  console.log("try to upload file");
   try {
     const formData = await req.formData();
-    console.log("try to upload file");
 
     const file = formData.get("file") as File;
     const arrayBuffer = await file.arrayBuffer();

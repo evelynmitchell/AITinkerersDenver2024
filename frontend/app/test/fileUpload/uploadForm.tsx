@@ -12,7 +12,7 @@ export default function UploadForm() {
     const formData = new FormData();
     formData.append("file", fileInput?.current?.files?.[0]!);
 
-    const response = await fetch("/test/fileUpload", {
+    const response = await fetch("/api/uploadImage", {
       method: "POST",
       body: formData,
     });
