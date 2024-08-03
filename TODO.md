@@ -11,6 +11,6 @@
 
 [ ] (who) try out the twelvelabs.io video embedding with a video sample
 
-[ ] (who) get a profile from all team members for website/presentation
+[ ] (Nick) get a profile from all team members for website/presentation
 
 [ ] (who) presentation
