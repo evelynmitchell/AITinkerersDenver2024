@@ -50,3 +50,5 @@ https://brainwavecollective.notion.site/AI-Tinkerers-Hackathon-Technical-Referen
 ## Project
 
 Semantic search with Knowledge Graph RAG over videos
+
+https://discord.gg/ZWP5BDbB
