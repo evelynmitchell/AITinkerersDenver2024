@@ -86,10 +86,8 @@ export default function Demo() {
                     <CardTitle>Upload Video</CardTitle>
                     <CardDescription>
                       {" "}
-                      <p>
-                        {status &&
-                          ` ${status.ready} ready | ${status.indexing} indexing | ${status.queued} queued | ${status.failed} failed`}
-                      </p>
+                      {status &&
+                        ` ${status.ready} ready | ${status.indexing} indexing | ${status.queued} queued | ${status.failed} failed`}
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
