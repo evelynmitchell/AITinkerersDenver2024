@@ -40,6 +40,7 @@ export default function Demo() {
   const [loading, setLoading] = useState(false);
   const [generatedText, setGeneratedText] = useState("");
   const [file, setFile] = useState<File | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -175,6 +176,31 @@ export default function Demo() {
       <ResizablePanel defaultSize={75}>
         <div className="flex h-full items-center justify-center p-6 pl-3 bg-slate-100">
           <div className="flex flex-col h-full w-full bg-white rounded-lg shadow-lg p-6">
+            <div className="flex">
+              <input
+                type="text"
+                placeholder="Ask your question after selecting a video"
+                className="p-2 mr-2 rounded-lg w-full bg-gray-100"
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              <Button
+                onClick={async () => {
+                  const currentActiveTranscription =
+                    videos[selectedCart].transcription;
+                  const transcript = await concatenateTranscript(
+                    currentActiveTranscription
+                  );
+                  const prompt = `${transcript}
+                with the above transcription, answer this question
+                ${searchQuery}`;
+                  const summary = await aiGenerate(prompt);
+                  setGeneratedText(summary);
+                }}
+              >
+                Ask
+              </Button>
+            </div>
+
             <h2 className="text-3xl"> Output</h2>
             <pre className="whitespace-pre-wrap ">{generatedText}</pre>
           </div>
