@@ -1,8 +1,8 @@
 const teamMembers = [
   {
-    name: "Alice Johnson",
+    name: "Evelyn Mitchell",
     title: "AI/Manager",
-    bio: "Alice is the lead developer and project manager with a passion for creating impactful solutions.",
+    bio: "Evelyn is the lead developer and project manager with a passion for creating impactful solutions.",
     avatar: "/avatars/sample.png",
   },
   {
