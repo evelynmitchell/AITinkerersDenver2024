@@ -3,7 +3,7 @@ const teamMembers = [
     name: "Evelyn Mitchell",
     title: "AI/Manager",
     bio: "Evelyn is the lead developer and project manager with a passion for creating impactful solutions.",
-    avatar: "/avatars/sample.png",
+    avatar: "/avatars/efm.jpg",
   },
   {
     name: "Bob Smith",
