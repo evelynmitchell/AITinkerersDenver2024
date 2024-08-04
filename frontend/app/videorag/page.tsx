@@ -1,6 +1,11 @@
 "use client";
 import { use, useEffect, useState } from "react";
 import { textToVideo } from "./utils";
+import {
+  getVideoTranscription,
+  concatenateTranscript,
+  aiGenerate,
+} from "../12labs/utils";
 
 import {
   ResizableHandle,
@@ -17,17 +22,15 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
-
-import { Separator } from "@/components/ui/separator";
+const indexId = "66ad18ad0af328de7c937dbc";
 
 export default function Home() {
   const [videos, setVideos] = useState<any[]>([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [answer, setAnswer] = useState("");
 
   useEffect(() => {
-    (async () => {
-      const data = await textToVideo("66ad18ad0af328de7c937dbc", "fire");
-      setVideos(data.data);
-    })();
+    (async () => {})();
   }, []);
 
   return (
@@ -38,8 +41,38 @@ export default function Home() {
           type="text"
           placeholder="Search"
           className="p-2 mr-2 rounded-lg w-full"
+          onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <Button>Search</Button>
+        <Button
+          onClick={async () => {
+            const data = await textToVideo(indexId, searchQuery);
+            // console.log(data);
+            setVideos(data.data);
+            const vidid = data.data[0].video_id;
+            console.log("videos..videoid", vidid);
+
+            let transcriptstring = "";
+            for (let i = 0; i < 2; i++) {
+              const transcription = await getVideoTranscription(
+                indexId,
+                videos[i].video_id
+              );
+              const trstring = await concatenateTranscript(transcription);
+              transcriptstring += trstring + "\n-----------------\n";
+            }
+
+            const prompt = `${transcriptstring}
+            
+            answer this question confidently using the above context
+            Q: ${searchQuery}?`;
+
+            console.log("prompt", prompt);
+            const generatedText = await aiGenerate(prompt);
+            setAnswer(generatedText);
+          }}
+        >
+          Search
+        </Button>
       </div>
       <ResizablePanelGroup
         direction="horizontal"
@@ -56,18 +89,30 @@ export default function Home() {
               {/* for loop of 10 */}
               <ScrollArea>
                 <div className="grid grid-cols-2 gap-4">
-                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i, index) => (
+                  {videos.map((video, index) => (
                     <Card>
                       <CardHeader>
-                        <CardTitle>Card Title {index}</CardTitle>
-                        <CardDescription>Card Description</CardDescription>
+                        <CardTitle>Score: {video.score}</CardTitle>
+                        <CardDescription>
+                          {/* {video.video_id} */}
+                          start: {video.start.toFixed(2)}s end:{" "}
+                          {video.end.toFixed(2)}s
+                        </CardDescription>
                       </CardHeader>
                       <CardContent>
-                        <p>Card Content</p>
+                        <img
+                          src={video.thumbnail_url}
+                          alt="thumbnail"
+                          className="w-full h-32 object-cover"
+                        />
+                        {/* <p>Card Content</p>
+                        <pre className="whitespace-pre-wrap">
+                          {JSON.stringify(video)}
+                        </pre> */}
                       </CardContent>
-                      <CardFooter>
+                      {/* <CardFooter>
                         <p>Card Footer</p>
-                      </CardFooter>
+                      </CardFooter> */}
                     </Card>
                   ))}
                 </div>
@@ -80,7 +125,7 @@ export default function Home() {
           <div className="flex h-full items-center justify-center p-6 pt-0 pl-3 bg-slate-100">
             <div className="flex flex-col h-full w-full bg-white rounded-lg shadow-lg p-6">
               <h2 className="text-3xl">AI answer</h2>
-              answer
+              <pre className="whitespace-pre-wrap">{answer}</pre>
             </div>
           </div>
         </ResizablePanel>
