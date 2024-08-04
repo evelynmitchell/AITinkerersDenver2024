@@ -41,7 +41,7 @@ This project is a comprehensive system for video analysis, content generation, a
 
 2. Run the script:
    ```
-   python video_analysis_system.py
+   python vidgenie.py
    ```
 
 3. The script will generate the specified content types and save any presentations as PowerPoint files.
