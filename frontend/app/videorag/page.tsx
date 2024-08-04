@@ -52,10 +52,12 @@ export default function Home() {
             console.log("videos..videoid", vidid);
 
             let transcriptstring = "";
+            const localVideos = data.data;
             for (let i = 0; i < 2; i++) {
+              console.log("videos[i].video_id", localVideos[i].video_id);
               const transcription = await getVideoTranscription(
                 indexId,
-                videos[i].video_id
+                localVideos[i].video_id
               );
               const trstring = await concatenateTranscript(transcription);
               transcriptstring += trstring + "\n-----------------\n";
@@ -94,7 +96,7 @@ export default function Home() {
                       <CardHeader>
                         <CardTitle>Score: {video.score}</CardTitle>
                         <CardDescription>
-                          {/* {video.video_id} */}
+                          {video.video_id}
                           start: {video.start.toFixed(2)}s end:{" "}
                           {video.end.toFixed(2)}s
                         </CardDescription>
