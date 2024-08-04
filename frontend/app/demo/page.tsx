@@ -136,7 +136,7 @@ export default function Demo() {
                           )} min | ${(
                             video.metadata.size /
                             (1024 * 1024)
-                          ).toFixed(2)} MB | ${video.created_at}`}
+                          ).toFixed(2)} MB`}
                         </CardDescription>
                       </CardHeader>
                       <CardContent>
