@@ -4,7 +4,7 @@ Hi everyone! I’m Nova, part of the PurposefullyBuilt team. I’m excited to in
 
 Greetings from PurposefullyBuilt, your dedicated team at the AI Tinkerers - Denver-Boulder Multimodal Hackathon! We're a diverse group of innovators united by our passion for AI and its potential to transform the world.
 
-Our team, which you can learn more about at https://purposefullybuilt.org/, 
+Our team, which you can learn more about at https://purposefullybuilt.org/,
 
 includes:
 
@@ -15,6 +15,8 @@ Nicholas Del Negro: An AI engineer and co-founder of Smash The AI Learning Curve
 Evelyn Mitchell: A seasoned sysadmin, developer, and manager with a wealth of experience in Linux operations. Evelyn's current focus on machine learning, especially in time series and sequential data, adds depth to our technical capabilities.
 
 Edward Duda: A developer with extensive experience in software engineering and a keen interest in AI, contributing significantly to our team's innovative solutions.
+
+Akhil: A ML Engineer :)
 
 At PurposefullyBuilt, we combine our diverse skills to create meaningful AI solutions:
 
@@ -40,6 +42,8 @@ Evelyn Mitchell: https://github.com/evelynmitchell
 
 Edward Duda: https://github.com/edwardduda
 
+Akhil: https://github.com/EdupugantiAkhil
+
 Our LinkedIn Profiles:
 
 Nicholas Del Negro: https://www.linkedin.com/in/nicholas-del-negro/
@@ -49,6 +53,8 @@ Straughter Guthrie: https://www.linkedin.com/in/straughter-guthrie-98ba0535/
 Evelyn Mitchell: https://www.linkedin.com/in/evelynmitchell/
 
 Edward Duda: https://www.linkedin.com/in/edward-duda-912bb4117/
+
+Akhil: https://www.linkedin.com/in/edupuganti-akhil-6b2353188/
 
 Thank you for this incredible opportunity to innovate and create together!
 
