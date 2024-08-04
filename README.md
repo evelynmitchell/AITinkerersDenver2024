@@ -1,54 +1,66 @@
-# AITinkerersDenver2024
+# Video Analysis and Content Generation System
 
-The Hackathon brief is to do a project in the area of:
+This project is a comprehensive system for video analysis, content generation, and interaction with video content using the Twelve Labs and Groq APIs. It can process both local video files and YouTube URLs to generate educational content such as syllabi, study guides, and presentations.
 
-Sports Understanding: Leverage multimodal AI to solve problems in sports and exercise analytics inm order to boost athletic performance and fitness.
+## Features
 
-Ecology and Environment: Develop multimodal AI-driven solutions to address challenges in ecology and environmental research.
+- Video analysis using Twelve Labs API
+- Content generation (syllabus, study guide, presentation) based on video analysis
+- PowerPoint presentation creation with automatic glossary generation
+- Video content querying and response generation
+- Support for both local video files and YouTube URLs
 
-Wildcard: Wildcard means wildcard! What have you got!
+## Prerequisites
 
-### Tooling
+- Python 3.7+
+- Twelve Labs API key
+- Groq API key
 
-```
-Twelvelabs video
-   embeddings 
-   RAG
-   Video image search
-     The video indexing is fairly fast
-     semantic search API
-   classification API
-     summary
-     chatets
-   open source framework jockey 
-      agents 
-      LLM orchestration 
-      chat with video to create content 
-      there will be a repo to clone to start with the tools/jockey 
-        supervisor 
-        planner
-          video tasks
-       Lang graph wrapper
-         There are tutorials on the Twelvelabs Jockey webpage.
+## Installation
 
-    sample video is available on the 12labs site
+1. Clone this repository:
+   ```
+   git clone https://github.com/yourusername/video-analysis-system.git
+   cd video-analysis-system
+   ```
 
+2. Install the required packages:
+   ```
+   pip install -r requirements.txt
+   ```
 
-Groq SDK
+3. Set up environment variables:
+   ```
+   export TWELVE_LABS_API_KEY='your_twelve_labs_api_key'
+   export GROQ_API_KEY='your_groq_api_key'
+   ```
 
-  Groq tools
+## Usage
 
-  40000tps input 1000tps output 
+1. Update the `main()` function in the script with your desired video input and content types.
 
-  audio processing 
+2. Run the script:
+   ```
+   python video_analysis_system.py
+   ```
 
-there are docs for Groq listed in the url below which you must fill out to get the increased rate limits for the weekend 
+3. The script will generate the specified content types and save any presentations as PowerPoint files.
 
-````
-https://brainwavecollective.notion.site/AI-Tinkerers-Hackathon-Technical-Reference-c2fc215b800e42dd99ab4472e50d8b3a
+## Configuration
 
-## Project
+- To use a local video file instead of a YouTube URL, set `is_youtube_url = False` and provide the local file path as `video_input`.
+- Adjust the `content_types` list to specify which types of content you want to generate.
 
-Semantic search with Knowledge Graph RAG over videos
+## Contributing
 
-https://discord.gg/ZWP5BDbB
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- Twelve Labs for their video analysis API
+- Groq for their language model API
+- All other open-source libraries used in this project
