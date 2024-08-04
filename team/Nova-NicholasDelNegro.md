@@ -21,14 +21,22 @@ Hackathon GitHub: https://github.com/evelynmitchell/AITinkerersDenver2024
 Our GitHub Links:
 
 Nicholas Del Negro: https://github.com/OSOSerious
+
 Teammate: https://github.com/jmanhype
+
 Teammate: https://github.com/evelynmitchell
+
 Teammate: https://github.com/edwardduda
+
 Our LinkedIn Profiles:
 
+
 Teammate (Straughter Guthrie): https://www.linkedin.com/in/straughter-guthrie-98ba0535/
+
 Teammate (Evelyn Mitchell): https://www.linkedin.com/in/evelynmitchell/
+
 Teammate (Edward Duda): https://www.linkedin.com/in/edward-duda-912bb4117/
+
 Thank you for this incredible experience and looking forward to future collaborations!
 
 Best regards,
