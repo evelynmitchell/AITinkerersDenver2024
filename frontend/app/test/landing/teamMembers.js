@@ -26,8 +26,8 @@ const teamMembers = [
   {
     name: "Matt Tourtelot",
     title: "Senior Software Engineer",
-    bio: "Matt is a senior AI engineer who contributed API debugging, and the static site. @mtourtelot ",
-    avatar: "/avatars/sample.png",
+    bio: "Matt is a senior software engineer who contributed API debugging, and the static site. @mtourtelot ",
+    avatar: "/avatars/matt.jpg",
   },
   {
     name: "Edward Duda",
