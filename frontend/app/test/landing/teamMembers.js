@@ -7,9 +7,9 @@ const teamMembers = [
   },
   {
     name: "Akhil Edupuganti ",
-    title: "Website Developer",
-    bio: "Akhile is an AI Engineer who contributed the website. @EdupugantiAkhil",
-    avatar: "/avatars/sample.png",
+    title: "ML Engineer",
+    bio: "Akhil is an AI Engineer who contributed the website. @EdupugantiAkhil",
+    avatar: "/avatars/akhil.jpg",
   },
   {
     name: "Straughter 'BatmanOsama' Guthrie",
@@ -17,31 +17,31 @@ const teamMembers = [
     bio: "Batmansama is an AI Engineer who architected the application, and named the team. @jmanhype",
     avatar: "/avatars/batman.jpg",
   },
-    {
-    name: "Nicholas Del Negro", 
+  {
+    name: "Nicholas Del Negro",
     title: "Prompt Engineer",
     bio: "Nicholas is an AI Engineer who created the prompts.",
     avatar: "/avatars/oso.jpg",
   },
-    {
+  {
     name: "Matt Tourtelot",
     title: "Senior Software Engineer",
     bio: "Matt is a senior AI engineer who contributed API debugging, and the static site. @mtourtelot ",
     avatar: "/avatars/sample.png",
   },
-    {
+  {
     name: "Edward Duda",
     title: "Software Engineer",
     bio: "Edward is a software engineer studying AI. He contributed scripts to manage videos.",
     avatar: "/avatars/ed.jpg",
   },
-    {
+  {
     name: "Nila MasrourSaadat",
     title: "Data Scientist",
     bio: "Nila developed a RAG + Video application for us. @nila-masroori",
     avatar: "/avatars/sample.png",
   },
-    {
+  {
     name: "AJ Sappenfield ",
     title: "Product Manager",
     bio: "AJ is a product manager who helped with the project management and website copy. @sappenfield",
