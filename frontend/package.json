@@ -10,11 +10,22 @@
   },
   "dependencies": {
     "@ai-sdk/openai": "^0.0.40",
+    "@radix-ui/react-label": "^2.1.0",
+    "@radix-ui/react-scroll-area": "^1.1.0",
+    "@radix-ui/react-select": "^2.1.1",
+    "@radix-ui/react-separator": "^1.1.0",
+    "@radix-ui/react-slot": "^1.1.0",
     "ai": "^3.3.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
     "dotenv": "^16.4.5",
+    "lucide-react": "^0.424.0",
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18",
+    "react-resizable-panels": "^2.0.22",
+    "tailwind-merge": "^2.4.0",
+    "tailwindcss-animate": "^1.0.7",
     "twelvelabs-js": "^0.2.5"
   },
   "devDependencies": {
