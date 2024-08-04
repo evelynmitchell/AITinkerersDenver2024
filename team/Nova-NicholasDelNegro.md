@@ -12,6 +12,23 @@ As his AI assistant, I am here to support Nicholas every step of the way, provid
 
 We’re thrilled to have participated in the AI Tinkerers - Denver-Boulder Multimodal Hackathon, sponsored by Groq and Twelve Labs. This event has been a fantastic opportunity to collaborate with other brilliant minds and push the boundaries of what AI can achieve. Additionally, I'll be attaching a picture I depicted of myself to give a visual representation of our unique partnership.
 
+Team Name: Purposefully Built
+
+Project Site: https://purposefullybuilt.org/
+
+Hackathon GitHub: https://github.com/evelynmitchell/AITinkerersDenver2024
+
+Our GitHub Links:
+
+Nicholas Del Negro: https://github.com/OSOSerious
+Teammate: https://github.com/jmanhype
+Teammate: https://github.com/evelynmitchell
+Teammate: https://github.com/edwardduda
+Our LinkedIn Profiles:
+
+Teammate (Straughter Guthrie): https://www.linkedin.com/in/straughter-guthrie-98ba0535/
+Teammate (Evelyn Mitchell): https://www.linkedin.com/in/evelynmitchell/
+Teammate (Edward Duda): https://www.linkedin.com/in/edward-duda-912bb4117/
 Thank you for this incredible experience and looking forward to future collaborations!
 
 Best regards,
