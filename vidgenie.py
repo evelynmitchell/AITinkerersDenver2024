@@ -11,10 +11,14 @@ from groq import Groq
 import chromadb
 import requests
 from pprint import pprint
+import logging
+import time
+from twelvelabs.exceptions import InternalServerError
 
 # Set up API keys and environment variables
 os.environ['API_URL'] = 'https://api.twelvelabs.io/v1.2'
 os.environ['TWELVE_LABS_API_KEY'] = 'tlk_2N42Q7B0R5JHV029BKVH51WXV26H'  # It's better to set this outside the script
+os.environ['GROQ_API_KEY'] = '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'  # It's better to set this outside the script
 TWELVE_LABS_API_KEY = os.getenv("TWELVE_LABS_API_KEY")
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
@@ -133,7 +137,9 @@ class GlossaryModule(dspy.Module):
 
 class VidGenieGenerator:
     def __init__(self):
-        self.twelve_labs_client = twelve_labs_client
+        self.twelve_labs_client = twelve_labs_client  # Use the global client
+        self.index_id = "66aa6336c0cd130695ae109c"  # Make sure this is the correct index ID
+        self.api_key = TWELVE_LABS_API_KEY
 
     def list_indexes(self):
         try:
@@ -148,54 +154,112 @@ class VidGenieGenerator:
         except Exception as e:
             print(f"Error retrieving indexes: {e}")
 
-    def analyze_video(self, video_file: str, is_youtube_url: bool = False) -> VideoAnalysis:
-        if is_youtube_url:
-            task = self.twelve_labs_client.task.create(index_id="your_index_id", video_url=video_file)
-        else:
-            task = self.twelve_labs_client.embed.task.create(
-                engine_name="Marengo-retrieval-2.6",
-                video_file=video_file
-            )
+    def analyze_video(self, video_file: str, is_youtube_url: bool = False, max_retries: int = 3, retry_delay: int = 5) -> Optional[VideoAnalysis]:
+        logging.basicConfig(level=logging.INFO)
+        logger = logging.getLogger(__name__)
+        logger.info(f"Analyzing video: {video_file}, is_youtube_url: {is_youtube_url}")
         
-        status = task.wait_for_done(sleep_interval=2)
-        print(f"Embedding done: {status}")
+        headers = {
+            "Accept": "application/json",
+            "x-api-key": self.twelve_labs_client.api_key
+        }
         
-        task = self.twelve_labs_client.embed.task.retrieve(task.id)
-        
-        collection = chroma_client.get_or_create_collection("video_embeddings")
-        
-        if task.video_embeddings is not None:
-            embeddings = []
-            metadatas = []
-            ids = []
-            id_counter = 1
-            
-            for v in task.video_embeddings:
-                metadata = {
-                    "embedding_scope": v.embedding_scope,
-                    "start_offset_sec": v.start_offset_sec,
-                    "end_offset_sec": v.end_offset_sec,
-                    "video_id": task.id
-                }
+        for attempt in range(max_retries):
+            try:
+                if is_youtube_url:
+                    logger.info("Processing YouTube URL")
+                    payload = {
+                        "index_id": self.index_id,
+                        "url": video_file
+                    }
+                    response = requests.post("https://api.twelvelabs.io/v1.2/tasks", json=payload, headers=headers)
+                else:
+                    logger.info("Processing local file")
+                    if not os.path.exists(video_file):
+                        logger.error(f"Error: The file '{video_file}' does not exist.")
+                        return None
+                    file_size = os.path.getsize(video_file)
+                    logger.info(f"File size: {file_size} bytes")
+                    if file_size > 2000000000:  # 2GB limit
+                        logger.error("Error: File size exceeds 2GB limit.")
+                        return None
+                    
+                    with open(video_file, 'rb') as file:
+                        logger.info(f"File opened successfully: {video_file}")
+                        files = {'file': (os.path.basename(video_file), file)}
+                        data = {'index_id': self.index_id}
+                        response = requests.post("https://api.twelvelabs.io/v1.2/tasks", files=files, data=data, headers=headers)
                 
-                embeddings.append(v.embedding.float)
-                metadatas.append(metadata)
-                ids.append(str(id_counter))
-                id_counter += 1
+                response.raise_for_status()
+                task = response.json()
+                logger.info(f"Task created successfully: {task['id']}")
+                break  # If successful, break out of the retry loop
+            except requests.exceptions.RequestException as e:
+                logger.error(f"Attempt {attempt + 1} failed: {e}")
+                logger.error(f"Response status code: {response.status_code}")
+                logger.error(f"Response headers: {response.headers}")
+                logger.error(f"Response content: {response.text}")
+                try:
+                    error_details = response.json()
+                    logger.error(f"Error details: {json.dumps(error_details, indent=2)}")
+                except json.JSONDecodeError:
+                    logger.error("Could not parse error response as JSON")
+                if attempt < max_retries - 1:
+                    logger.info(f"Retrying in {retry_delay} seconds...")
+                    time.sleep(retry_delay)
+                else:
+                    logger.error("Max retries reached. Unable to process the video.")
+                    return None
+
+        try:
+            # Poll for task completion
+            while True:
+                response = requests.get(f"https://api.twelvelabs.io/v1.2/tasks/{task['id']}", headers=headers)
+                response.raise_for_status()
+                task_status = response.json()
+                if task_status['status'] == 'ready':
+                    break
+                time.sleep(2)
             
-            collection.upsert(embeddings=embeddings, metadatas=metadatas, ids=ids)
-            print(f"Upserted {len(embeddings)} embeddings into Chroma collection.")
-        
-        summary = self.twelve_labs_client.generate.summarize(task.id, type="summary")
-        gist = self.twelve_labs_client.generate.gist(task.id, types=["topic", "chapter"])
-        transcript = self.twelve_labs_client.generate.text(task.id, prompt="Provide a full transcript of the video")
-        
-        return VideoAnalysis(
-            summary=summary.summary,
-            topics=gist.topics,
-            chapters=gist.chapters,
-            transcript=transcript.data
-        )
+            logger.info(f"Embedding done: {task_status['status']}")
+            
+            # Retrieve video information
+            response = requests.get(f"https://api.twelvelabs.io/v1.2/indexes/{self.index_id}/videos/{task_status['video_id']}", headers=headers)
+            response.raise_for_status()
+            video_info = response.json()
+            
+            # Generate summary
+            summary_response = requests.post(f"https://api.twelvelabs.io/v1.2/summarize", 
+                                             json={"video_id": task_status['video_id'], "type": "summary"}, 
+                                             headers=headers)
+            summary_response.raise_for_status()
+            summary = summary_response.json()['summary']
+            
+            # Generate gist (topics and chapters)
+            gist_response = requests.post(f"https://api.twelvelabs.io/v1.2/generate", 
+                                          json={"video_id": task_status['video_id'], "types": ["topic", "chapter"]}, 
+                                          headers=headers)
+            gist_response.raise_for_status()
+            gist = gist_response.json()
+            
+            # Generate transcript
+            transcript_response = requests.post(f"https://api.twelvelabs.io/v1.2/generate", 
+                                                json={"video_id": task_status['video_id'], "prompt": "Provide a full transcript of the video"}, 
+                                                headers=headers)
+            transcript_response.raise_for_status()
+            transcript = transcript_response.json()['data']
+            
+            return VideoAnalysis(
+                summary=summary,
+                topics=gist['topics'],
+                chapters=gist['chapters'],
+                transcript=transcript
+            )
+        except requests.exceptions.RequestException as e:
+            logger.error(f"An error occurred while processing the task: {e}")
+            import traceback
+            traceback.print_exc()
+            return None
 
     def generate_content(self, video_analysis: VideoAnalysis, content_type: str) -> VidGenieContent:
         prompt = f"""
@@ -292,11 +356,19 @@ class VidGenieGenerator:
         return response.json()
 
 def process_video(video_file: str, content_types: List[str], is_youtube_url: bool = False):
+    print(f"Processing video: {video_file}, content_types: {content_types}, is_youtube_url: {is_youtube_url}")
     generator = VidGenieGenerator()
+    print("Analyzing video")
     video_analysis = generator.analyze_video(video_file, is_youtube_url)
+    if video_analysis is None:
+        print("Video analysis failed.")
+        return None
+    
+    print("Video analysis completed successfully")
     results = {}
 
     for content_type in content_types:
+        print(f"Generating content for type: {content_type}")
         content = generator.generate_content(video_analysis, content_type)
         if content_type == "syllabus":
             results[content_type] = generator.create_syllabus(content)
@@ -306,39 +378,54 @@ def process_video(video_file: str, content_types: List[str], is_youtube_url: boo
             presentation = generator.create_presentation(content)
             results[content_type] = presentation.to_dict()
 
+    print(f"Content generation completed. Results: {results}")
     return results
 
 def main():
+    print("Starting main function")
     from dspygen.utils.dspy_tools import init_ol
     init_ol()
 
+    print("Creating VidGenieGenerator instance")
     generator = VidGenieGenerator()
     
-    # List indexes
+    print("Listing indexes")
     generator.list_indexes()
 
     # Example usage
-    video_input = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"  # YouTube URL example
-    is_youtube_url = True  # Set to False if using a local file path
-    content_types = ["syllabus", "study_guide", "presentation"]
+    video_input = "Building Custom GPTs with GPT Crawler.mp4"
+    is_youtube_url = False
+    content_types = ["summary", "transcript"]
+    
+    print(f"Starting video processing with input: {video_input}")
     results = process_video(video_input, content_types, is_youtube_url)
     
+    if results is None:
+        print("Video processing failed. Exiting.")
+        return
+
+    print("Video processing completed successfully")
     print(json.dumps(results, indent=2))
 
     # Create PowerPoint presentation if requested
     if "presentation" in results:
+        print("Creating PowerPoint presentation")
         presentation = Presentation(**results["presentation"])
         presentation.to_ppt(file_path="generated_presentation.pptx")
 
     # Example of querying video content
-    query_results = generator.query_video_content("marketing")
+    print("Querying video content")
+    query_results = generator.query_video_content("custom GPTs")
     print("Query results:", query_results)
 
     # Example of generating a response based on video content
     if query_results:
+        print("Generating response based on video content")
         video_id = query_results[0]['video_id']
-        response = generator.generate_response(video_id, "What's this video about?")
+        response = generator.generate_response(video_id, "What are the main steps to create a custom GPT?")
         print("Generated response:", response)
+
+    print("Main function completed")
 
 if __name__ == '__main__':
     main()
