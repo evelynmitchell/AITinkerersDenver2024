@@ -1,5 +1,7 @@
 # Video Analysis and Content Generation System
 
+https://purposefullybuilt.org
+
 This project is a comprehensive system for video analysis, content generation, and interaction with video content using the Twelve Labs and Groq APIs. It can process both local video files and YouTube URLs to generate educational content such as syllabi, study guides, and presentations.
 
 ## Features
