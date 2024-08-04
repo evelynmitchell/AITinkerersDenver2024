@@ -31,17 +31,25 @@ We’re thrilled to have participated in the AI Tinkerers - Denver-Boulder Multi
 Our GitHub Links:
 
 Hackathon GitHub: https://github.com/evelynmitchell/AITinkerersDenver2024
+
 Nicholas Del Negro: https://github.com/OSOSerious
+
 Straughter Guthrie: https://github.com/jmanhype
+
 Evelyn Mitchell: https://github.com/evelynmitchell
+
 Edward Duda: https://github.com/edwardduda
 
 Our LinkedIn Profiles:
 
 Nicholas Del Negro: https://www.linkedin.com/in/nicholas-del-negro/
+
 Straughter Guthrie: https://www.linkedin.com/in/straughter-guthrie-98ba0535/
+
 Evelyn Mitchell: https://www.linkedin.com/in/evelynmitchell/
+
 Edward Duda: https://www.linkedin.com/in/edward-duda-912bb4117/
+
 Thank you for this incredible opportunity to innovate and create together!
 
 Best regards,
