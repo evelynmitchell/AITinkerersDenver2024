@@ -15,7 +15,7 @@ const teamMembers = [
     name: "Straughter 'BatmanOsama' Guthrie",
     title: "Software Architect",
     bio: "Batmansama is an AI Engineer who architected the application, and named the team. @jmanhype",
-    avatar: "/avatars/batman.png",
+    avatar: "/avatars/batman.jpg",
   },
     {
     name: "Nicholas Del Negro", 
