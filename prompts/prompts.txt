@@ -1,0 +1,34 @@
+ Transcript Generation Class
+Prompts:
+
+Generate accurate transcript of the video.
+Capture all dialogue and narration precisely, ensure completeness.
+
+2. Scene Description Class
+Prompts:
+
+Describe scene: setting, tone, key elements, actions, interactions.
+Highlight visual elements and significant interactions in detail.
+Provide atmosphere and contextual background information for clarity.
+
+3. Summary Generation Class
+Prompts:
+
+Summarize main points, key takeaways, technical insights, actionable information.
+Provide concise overview of technical concepts and performance metrics.
+
+4. Slide Presentation Creation Class
+Prompts:
+
+Create slides: key terms, technology overview, comparisons, use cases.
+Include visual aids: images, diagrams, charts for clear illustration.
+Ensure consistent branding, professional visual design throughout slides.
+Develop interactive elements: embedded videos, interactive diagrams, quizzes, polls.
+
+5. Study Guide Creation Class
+Prompts:
+
+Create study guide: main concepts, key takeaways, resources, exercises.
+Include additional reading materials, relevant resources for further learning.
+Add review questions, exercises to reinforce understanding effectively.
+Provide section for user feedback, reflection, and improvement suggestions.
