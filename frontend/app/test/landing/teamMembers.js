@@ -39,13 +39,13 @@ const teamMembers = [
     name: "Nila MasrourSaadat",
     title: "Data Scientist",
     bio: "Nila developed a RAG + Video application for us. @nila-masroori",
-    avatar: "/avatars/sample.png",
+    avatar: "/avatars/nina.jpg",
   },
   {
     name: "AJ Sappenfield ",
     title: "Product Manager",
     bio: "AJ is a product manager who helped with the project management and website copy. @sappenfield",
-    avatar: "/avatars/sample.png",
+    avatar: "/avatars/aj.jpg",
   },
 ];
 
